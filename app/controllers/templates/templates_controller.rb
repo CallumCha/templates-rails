@@ -5,7 +5,7 @@ module Templates
     end
 
     def show
-      if params[:id].present? && File.directory?("./app/views/#{Templates.views_path}/#{params[:id]}")
+      if params[:id].present? && File.directory?(Rails.root.join("app/views/#{Templates.views_path}/#{params[:id]}"))
         render template: 'templates/templates/nested_index', layout: 'templates/index'
       else
         render "#{Templates.views_path}/#{params[:id]}", layout: 'templates/show'

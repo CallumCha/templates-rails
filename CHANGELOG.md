@@ -1,5 +1,9 @@
 ## Changelog
 
+### Unreleased
+* **Bug fix**: URL-encode file names in nested folder links, so a template such as `clients#index.html.erb` links to `/templates/clients/clients%23index` instead of dropping everything after the `#`.
+* **Bug fix**: Look up templates from `Rails.root` instead of the current working directory, so the index pages list the right files however the server was started (and in the dummy app specs).
+
 ### 0.2.1 - 07-05-2026
 * **Bug fix**: Move the engine's bundled `index` and `nested_index` views from `app/views/templates/` to `app/views/templates/templates/` (matching the namespaced `Templates::TemplatesController` view path). Host apps with their own `app/views/templates/` views were shadowing the engine's templates, causing `MissingTemplate` errors at the engine root. No host-app changes are needed — Rails resolves the views via the controller's natural lookup path.
 
